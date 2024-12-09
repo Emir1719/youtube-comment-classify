@@ -8,7 +8,10 @@ class CommentService {
 
   Future<List<Comment>?> getCommentsByChannelName(String channelName, int day) async {
     try {
-      final response = await _dio.post("/channel", data: {"channel": channelName, "days": day});
+      final response = await _dio.post(
+        "/channel",
+        data: {"channel_name": channelName, "days": day},
+      );
       List<dynamic>? data = response.data["data"];
 
       return data?.map((json) => Comment.fromJson(json)).toList();
