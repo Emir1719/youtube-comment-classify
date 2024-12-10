@@ -32,7 +32,7 @@ final class AppColorScheme {
         primaryContainer: Colors.white,
         surfaceContainerLowest: Colors.grey.shade200,
         surfaceContainerLow: Colors.grey.shade300,
-        surfaceContainerHigh: Colors.grey.shade700,
+        surfaceContainerHigh: Colors.grey.shade500,
         surfaceContainerHighest: Colors.grey.shade800,
 
         /// Hata rengi

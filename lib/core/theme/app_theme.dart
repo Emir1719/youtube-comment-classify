@@ -31,7 +31,7 @@ final class AppTheme {
   IconButtonThemeData _iconButtonTheme() {
     return IconButtonThemeData(
       style: ButtonStyle(
-        iconColor: WidgetStatePropertyAll(_colorScheme.onPrimary),
+        iconColor: WidgetStatePropertyAll(_colorScheme.onSurface),
         backgroundColor: WidgetStatePropertyAll(_colorScheme.surfaceTint),
         foregroundColor: WidgetStatePropertyAll(_colorScheme.onPrimary),
         surfaceTintColor: WidgetStatePropertyAll(_colorScheme.surfaceTint),
@@ -107,7 +107,7 @@ final class AppTheme {
 
   AppBarTheme _appBarTheme() {
     return AppBarTheme(
-      elevation: 5,
+      elevation: 10,
       actionsIconTheme: IconThemeData(color: _colorScheme.surface),
       iconTheme: IconThemeData(color: _colorScheme.surface, size: 24),
       color: _colorScheme.primary,
@@ -134,8 +134,8 @@ final class AppTheme {
 
   InputDecorationTheme _inputDecorationTheme() {
     final border = OutlineInputBorder(
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(color: _colorScheme.onSurface),
+      borderRadius: const BorderRadius.all(Radius.circular(30)),
+      borderSide: BorderSide(color: _colorScheme.surfaceContainerHigh),
     );
 
     return InputDecorationTheme(
@@ -147,7 +147,7 @@ final class AppTheme {
       focusedBorder: border,
       enabledBorder: border,
       errorBorder: border.copyWith(borderSide: BorderSide(color: _colorScheme.error)),
-      contentPadding: const EdgeInsets.only(top: 16, left: 15, right: 15, bottom: 16),
+      contentPadding: const EdgeInsets.all(18),
     );
   }
 

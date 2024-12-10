@@ -10,23 +10,25 @@ class CommentController extends GetxController {
   var isLoading = false.obs; // Yükleniyor durumu
 
   final channelName = TextEditingController(text: "@sozlerkosku");
-  final day = TextEditingController();
+  final day = TextEditingController(text: "1");
 
-  void getCommentsByChannelName() async {
+  void onTab() async {
     try {
       isLoading(true);
       _comments.value = await _commentService.getCommentsByChannelName(
         channelName.text,
-        int.tryParse(day.text) ?? 3,
+        int.tryParse(day.text) ?? 1,
       );
       isLoading(false);
-
-      print(_comments.value?.length);
-      print(_comments.value?.first.text);
+      update();
     } catch (e) {
       print(e);
     }
   }
 
-  Rxn<List<Comment>> get comments => _comments;
+  int getCountByCategory(String category) {
+    return comments?.where((element) => element.category == category).toList().length ?? 0;
+  }
+
+  List<Comment>? get comments => _comments.value;
 }

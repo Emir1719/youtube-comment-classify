@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:youtube_comment_classify/comment/widget/category_sentiment.dart';
+import 'package:youtube_comment_classify/comment/widget/comment_view_content.dart';
+import 'package:youtube_comment_classify/comment/widget/search_text_field.dart';
 
 import './comment_controller.dart';
 
@@ -11,34 +14,13 @@ class CommentPage extends GetView<CommentController> {
     return Scaffold(
       appBar: AppBar(title: const Text('Sözler Köşkü - Yorum Analizi')),
       body: ListView(
-        padding: const EdgeInsets.all(25),
-        children: [
-          TextFormField(controller: controller.channelName),
-          TextFormField(controller: controller.day),
-          ElevatedButton(
-            onPressed: controller.getCommentsByChannelName,
-            child: const Text("Tıkla"),
-          ),
-          Obx(() {
-            if (controller.isLoading.value) {
-              return const CircularProgressIndicator(); // Eğer yorumlar boş veya null ise, yükleniyor göstergesi
-            } else {
-              final comments = controller.comments.value ?? [];
-
-              return Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: comments.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(comments[index].text),
-                      subtitle: Text(comments[index].category),
-                    );
-                  },
-                ),
-              );
-            }
-          }),
+        padding: const EdgeInsets.all(40),
+        children: const [
+          SearchTextField(),
+          SizedBox(height: 25),
+          CategorySentiment(),
+          SizedBox(height: 25),
+          CommentViewContent(),
         ],
       ),
     );
