@@ -109,7 +109,7 @@ final class AppTheme {
     return AppBarTheme(
       elevation: 10,
       actionsIconTheme: IconThemeData(color: _colorScheme.surface),
-      iconTheme: IconThemeData(color: _colorScheme.surface, size: 24),
+      iconTheme: IconThemeData(color: _colorScheme.onPrimary, size: 24),
       color: _colorScheme.primary,
       surfaceTintColor: _colorScheme.surfaceTint,
       titleTextStyle: _textTheme.titleMedium?.copyWith(

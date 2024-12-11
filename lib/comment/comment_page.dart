@@ -17,7 +17,7 @@ class CommentPage extends GetView<CommentController> {
         padding: const EdgeInsets.all(40),
         children: const [
           SearchTextField(),
-          SizedBox(height: 25),
+          SizedBox(height: 15),
           CategorySentiment(),
           SizedBox(height: 25),
           CommentViewContent(),

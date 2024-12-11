@@ -11,16 +11,34 @@ class SentimentCount extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CommentController>(
       builder: (controller) {
-        var count = controller.getCountByCategory(category).toString();
+        String count = "0";
+        Color? color, textColor;
 
-        return Container(
-          decoration: BoxDecoration(
-            color: context.color.surfaceContainerLowest,
-            borderRadius: BorderRadius.circular(15),
+        if (category == "All") {
+          count = controller.comments?.length.toString() ?? "0";
+        } else {
+          count = controller.getCountByCategory(category).toString();
+        }
+
+        if (category == controller.selectedCategory) {
+          color = context.color.primary;
+          textColor = context.color.onPrimary;
+        }
+
+        return GestureDetector(
+          onTap: () => controller.changeCategory(category),
+          child: Container(
+            decoration: BoxDecoration(
+              color: color ?? context.color.surfaceContainerLowest,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            margin: const EdgeInsets.only(right: 10),
+            child: Text(
+              "$category: $count",
+              style: TextStyle(color: textColor ?? Colors.black),
+            ),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-          margin: const EdgeInsets.only(right: 15),
-          child: Text("$category: $count"),
         );
       },
     );
